@@ -54,7 +54,15 @@ public class ClientHandler {
                                 server.broadcastMsg("Пользовать " + nick + " покинул чат.");
                                 break;
                             }
-                            server.broadcastMsg(nick + ": " + str);
+                            if (str.startsWith("/w")) {
+                                String[] whisper = str.split(" ");
+                                StringBuilder stringBuilder = new StringBuilder(str);
+                                stringBuilder.delete(0, (whisper[0].length() + whisper[1].length() + 2));
+                                String strToSend = ("whisper from " + nick + ": " + stringBuilder.toString());
+                                server.whisperMsg(whisper[1], strToSend);
+                            } else {
+                                server.broadcastMsg(nick + ": " + str);
+                            }
                         }
                     } catch (IOException e) {
                         e.printStackTrace();
