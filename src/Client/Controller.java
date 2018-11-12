@@ -12,6 +12,12 @@ import java.io.DataOutputStream;
 import java.io.IOException;
 import java.net.Socket;
 
+/**
+ * Java 2. Homework to Lesson 7.
+ * @author Ilya Kukushkin
+ * @version 12 Nov 2018
+ */
+
 public class Controller {
 
     @FXML

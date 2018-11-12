@@ -6,6 +6,12 @@ import java.net.Socket;
 import java.sql.SQLException;
 import java.util.Vector;
 
+/**
+ * Java 2. Homework to Lesson 7.
+ * @author Ilya Kukushkin
+ * @version 12 Nov 2018
+ */
+
 public class Server {
 
     private Vector<ClientHandler> clients;
@@ -40,6 +46,7 @@ public class Server {
         }
     }
 
+    /** Проверка занятости nickname */
     public boolean nickIsBusy(String nick) {
         boolean isBusy = false;
         for (ClientHandler o : clients) {
@@ -48,6 +55,7 @@ public class Server {
         return isBusy;
     }
 
+    /** Отправка whisper сообщения */
     public void whisperMsg(String nick, String msg) {
         for (ClientHandler o : clients) {
             if (o.getNick().equals(nick)) o.sendMsg(msg);

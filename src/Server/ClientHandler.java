@@ -5,6 +5,12 @@ import java.io.DataOutputStream;
 import java.io.IOException;
 import java.net.Socket;
 
+/**
+ * Java 2. Homework to Lesson 7.
+ * @author Ilya Kukushkin
+ * @version 12 Nov 2018
+ */
+
 public class ClientHandler {
 
     private Socket socket = null;
@@ -31,6 +37,7 @@ public class ClientHandler {
                                 String newNick = AuthService.getNickByLoginAndPass(tokens[1], tokens[2]);
                                 if (newNick != null) {
                                     nick = newNick;
+                                    /* Блок проверки занятости nickname */
                                     if (!server.nickIsBusy(nick)) {
                                         sendMsg("/authok");
                                         server.subscribe(ClientHandler.this);
@@ -54,6 +61,7 @@ public class ClientHandler {
                                 server.broadcastMsg("Пользовать " + nick + " покинул чат.");
                                 break;
                             }
+                            /* Блок отправки whisper сообщения */
                             if (str.startsWith("/w")) {
                                 String[] whisper = str.split(" ");
                                 StringBuilder stringBuilder = new StringBuilder(str);

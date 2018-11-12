@@ -1,7 +1,12 @@
 package Server;
 
-
 import java.sql.*;
+
+/**
+ * Java 2. Homework to Lesson 7.
+ * @author Ilya Kukushkin
+ * @version 12 Nov 2018
+ */
 
 public class AuthService {
 
