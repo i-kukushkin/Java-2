@@ -50,7 +50,7 @@ public class Server {
     public boolean nickIsBusy(String nick) {
         boolean isBusy = false;
         for (ClientHandler o : clients) {
-            isBusy = o.getNick().equals(nick);
+            if (o.getNick().equals(nick)) isBusy = true;
         }
         return isBusy;
     }
